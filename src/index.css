@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.accordion-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    opacity: 0;
+    transition: all 0.5s ease;
+    background-color: transparent;
+}
+
+.accordion-content.hovered {
+    height: 120px; /* Adjust this value according to your needs */
+    background-color: rgba(24, 19, 19, 0.5); /* Background color for the content */
+    opacity: 100;
+}
