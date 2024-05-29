@@ -21,9 +21,10 @@ const MainPage = () => {
                     </div>
                 </div>
             </section>
-            <section className="">
+            <section className="w-full flex items-center justify-center">
                 <ProjectNameButton name="Accordian" />
                 <ProjectNameButton name="Random Color" />
+                <ProjectNameButton name="Git Profile Finder" />
             </section>
             <section className="flex items-center justify-center flex-col gap-2 bg-gradient-to-r from-slate-300 via-gray-300 to-slate-300">
                 <div className="flex items-center justify-center gap-3 font-bold text-3xl font-serif m-3">

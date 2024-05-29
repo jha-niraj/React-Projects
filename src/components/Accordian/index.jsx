@@ -4,8 +4,8 @@ import { Plus, Minus } from "lucide-react";
 
 const Accordian = () => {
     return (
-        <div className="m-3 flex flex-col items-center justify-center">
-            <div className="p-4 flex flex-col gap-4 transition-all">
+        <div className="m-3 flex flex-col items-center justify-center w-[100%]">
+            <div className="p-4 flex flex-col gap-4 transition-all w-[60%]">
             {
                 data && data.length > 0 ? 
                     data.map((d, index) => {
@@ -32,8 +32,6 @@ const AccordianDesign = ({accordianData}) => {
         setSingleSelection(currentId === singleSelection ? null : currentId);
     }
 
-    console.log(singleSelection);
-
     // Here I am getting this error as, React is preventing an infinite loops because I am invoking the function immediately
     // instead of passing a reference. This results in an infinite loop of state updates because 'handleSingleSelection' updates the state
     // causing a re-render, and then it's called again.
@@ -49,7 +47,7 @@ const AccordianDesign = ({accordianData}) => {
             <div className="transition-all">
                 <p className={`font-medium w-[95%] ${accordianVisible ? 'hidden' : "flex"}`}>{accordianData.answer}</p>
             </div> */}
-            <div className={`transition-all ${singleSelection === accordianData.id ? 'block' : 'hidden'}`}>
+            <div className={`transition-all text-left ${singleSelection === accordianData.id ? 'block' : 'hidden'}`}>
                 <p className="font-medium w-[95%]">{accordianData.answer}</p>
             </div>
         </div>
