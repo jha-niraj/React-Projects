@@ -1,4 +1,4 @@
-import { Sun, Search, MapPin, Twitter, Home } from "lucide-react";
+import { Sun, Search, MapPin, Twitter, Home, Moon } from "lucide-react";
 import profileImage from "../assets/accordian.jpg";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -7,6 +7,8 @@ import { Link } from "react-router-dom"
 const GitProfileFinder = () => {
     const [username, setUsername] = useState("");
     const [debouncedUsername, setDebouncedUsername] = useState("");
+    const [ theme, setTheme ] = useState("gray");
+    console.log(theme);
 
     const [userDetails, setUserDetails] = useState({});
     // const [ repo, setRepo ] = useState("");
@@ -30,25 +32,23 @@ const GitProfileFinder = () => {
         fetchUserDetails();
     }, [debouncedUsername])
 
-    console.log(userDetails);
-
     return (
-        <section className=" bg-gray-800 text-white flex items-center justify-center h-screen">
+        <section className={`${theme === "gray" ? "bg-gray-800 text-white" : "bg-white text-black"} text-white flex items-center justify-center h-screen transition-colors`}>
             <div className="flex items-center justify-center flex-col gap-10 w-[100%]">
                 <div className="flex justify-between w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
                     <h1 className="text-3xl font-bold">Github Profile Finder</h1>
-                    <div className="flex items-center justify-center gap-5">
-                        <h1 className="text-xl font-semibold">Light</h1>
-                        <Sun className="fill-white" />
-                    </div>
+                    <button className="flex items-center justify-center gap-5">
+                        <Sun onClick={() => setTheme("white")} className={`${theme === "gray" ? "block" : "hidden"} fill-white cursor-pointer`} />
+                        <Moon onClick={() => setTheme("gray")} className={`${theme === "gray" ? "hidden" : "block"} fill-white cursor-pointer`} />
+                    </button>
                 </div>
-                <div className="flex items-center justify-between shadow-2xl bg-gray-700 p-3 rounded-lg w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
+                <div className="flex items-center justify-between shadow-2xl bg-black p-3 rounded-lg w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
                     <div className="flex items-center justify-start gap-3 w-full">
                         <Search className="text-blue-500" />
-                        <input type="text" placeholder="Enter your GitHub Username" onChange={(e) => setUsername(e.target.value)} className="bg-transparent pl-3 h-10 w-[100%] placeholder:w-full" />
+                        <input type="text" placeholder="Enter your GitHub Username" onChange={(e) => setUsername(e.target.value)} className="bg-transparent pl-3 h-10 w-[100%] placeholder:w-full placeholder:text-white" />
                     </div>
                 </div>
-                <div className="flex justify-center gap-5 flex-col shadow-2xl bg-gray-700 rounded-lg p-5 w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
+                <div className="flex justify-center gap-5 flex-col text-white shadow-2xl bg-black rounded-lg p-5 w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
                     <div className="flex ">
                         <div className="flex items-start flex-col justify-around w-full">
                             <div>
@@ -68,7 +68,7 @@ const GitProfileFinder = () => {
                             <p className="">{userDetails.bio}
                             </p>
                         </div>
-                        <div className="bg-black p-5 rounded-lg w-[100%] flex items-center justify-center">
+                        <div className="bg-gray-700 p-5 rounded-lg w-[100%] flex items-center justify-center">
                             <button className="w-full flex flex-col items-center justify-center">
                                 <h1 className="text-md font-semibold">Repos</h1>
                                 <p className="font-bold">{userDetails.public_repos}</p>
