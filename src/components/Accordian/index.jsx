@@ -5,7 +5,7 @@ import { Plus, Minus } from "lucide-react";
 const Accordian = () => {
     return (
         <div className="m-3 flex flex-col items-center justify-center w-[100%]">
-            <div className="p-4 flex flex-col gap-4 transition-all w-[60%]">
+            <div className="p-4 flex flex-col gap-4 transition-all w-[95%]">
             {
                 data && data.length > 0 ? 
                     data.map((d, index) => {
@@ -36,9 +36,9 @@ const AccordianDesign = ({accordianData}) => {
     // instead of passing a reference. This results in an infinite loop of state updates because 'handleSingleSelection' updates the state
     // causing a re-render, and then it's called again.
     return (
-        <div className="flex flex-col justify-center m-3 p-3 rounded-lg gap-3 bg-gradient-to-r from-gray-200 via-gey-400 to-gray-200">
+        <div className="flex flex-col justify-center m-3 p-3 rounded-lg gap-3 bg-gradient-to-r from-gray-200 via-gey-400 to-gray-200 transition-all duration-300 ease-in-out">
             <button className="flex items-start justify-between cursor-pointer" onClick={() => handleSingleSelection(accordianData.id)}>
-                <h1 className="font-bold text-2xl text-left">{accordianData.question}</h1>
+                <h1 className="font-medium text-xl text-left">{accordianData.question}</h1>
                 {
                     singleSelection === accordianData.id ? <Minus /> : <Plus />
                 }
@@ -48,7 +48,7 @@ const AccordianDesign = ({accordianData}) => {
                 <p className={`font-medium w-[95%] ${accordianVisible ? 'hidden' : "flex"}`}>{accordianData.answer}</p>
             </div> */}
             <div className={`transition-all text-left ${singleSelection === accordianData.id ? 'block' : 'hidden'}`}>
-                <p className="font-medium w-[95%]">{accordianData.answer}</p>
+                <p className="font-small w-[90%]">{accordianData.answer}</p>
             </div>
         </div>
     )
