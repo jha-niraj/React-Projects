@@ -33,8 +33,11 @@ const GitProfileFinder = () => {
     }, [debouncedUsername])
 
     return (
-        <section className={`${theme === "gray" ? "bg-gray-800 text-white" : "bg-white text-black"} text-white flex items-center justify-center h-screen transition-colors`}>
-            <div className="flex items-center justify-center flex-col gap-10 w-[100%]">
+        <section className={`${theme === "gray" ? "bg-gray-800 text-white" : "bg-white text-black"} text-white flex flex-col transition-colors`}>
+            <div className={`${theme === "gray" ? "bg-gray-800 text-white" : "bg-white"} flex m-1 items-start justify-start transition-colors`}>
+                <Link to="/" className="bg-black p-2 rounded-lg">Home Page</Link>
+            </div>
+            <div className={`${theme === "gray" ? "bg-gray-800 text-white" : "bg-white text-black"} flex items-center justify-center flex-col gap-10 w-[100%] h-screen transition-colors`}>
                 <div className="flex justify-between w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
                     <h1 className="text-3xl font-bold">Github Profile Finder</h1>
                     <button className="flex items-center justify-center gap-5">
@@ -56,7 +59,7 @@ const GitProfileFinder = () => {
                                 <a className="underline text-blue-500">@{userDetails.login}</a>
                             </div>
                             <div>
-                                <h1>{userDetails.created_at}</h1>
+                                <h1>Created At : <span className="text-black bg-sky-100 p-1 rounded-lg">{userDetails.created_at ? userDetails.created_at.split("T")[0] : "Not Available"}</span></h1>
                             </div>
                         </div>
                         <div className="flex items-start justify-center">
