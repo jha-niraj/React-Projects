@@ -57,7 +57,7 @@ export default () => {
                     {
                         filteredProjects.map((project, index) => {
                                 return (
-                                    <ProjectCard key={index} image={project.image} title={project.title} description={project.description} navigateTo={project.navigateTo} />
+                                    <ProjectCard key={index} image={project.image} title={project.title} description={project.description} navigateTo={project.navigateTo} externalLink={project.externalLink} />
                                 )
                         })
                     }
@@ -70,8 +70,9 @@ export default () => {
     )
 }
 
-const ProjectCard = ({ image, title, description, navigateTo }) => {
+const ProjectCard = ({ image, title, description, navigateTo, externalLink }) => {
     const navigate = useNavigate();
+    console.log(externalLink);
 
     return (
         <div className="flex items-center justify-center w-full">
@@ -84,7 +85,7 @@ const ProjectCard = ({ image, title, description, navigateTo }) => {
                     <p className="font-tini text-md text-left">{description}</p>
                 </div>
                 <div className="flex items-start gap-2 justify-start">
-                    <Link onClick={() => navigate(`${navigateTo}`)} className="bg-black p-2 w-32 text-center text-white rounded-lg hover:bg-gray-800 transition-all duration-300">View Code</Link>
+                    <Link target="_blank" to={`${externalLink && externalLink ? externalLink : "https://github.com/jha-niraj/Small-React-Projects/tree/master/src/projects"}`} className="bg-black p-2 w-32 text-center text-white rounded-lg hover:bg-gray-800 transition-all duration-300">View Code</Link>
                     <button onClick={() => navigate(`${navigateTo}`)} className="bg-black p-2 w-32 text-white rounded-lg hover:bg-gray-800 transition-all duration-300">View Project</button>
                 </div>
             </div>

@@ -33,4 +33,11 @@ export const projectList = [
         "description": "GitHub Profile Finder is a simple web application that allows users to search for GitHub profiles by username and view their profile information and latest repositories.",
         "navigateTo": "/gitprofilefinder"
     },
+    {
+        "image": GitProfileImage,
+        "title": "Git Profile Finder",
+        "description": "GitHub Profile Finder is a simple web application that allows users to search for GitHub profiles by username and view their profile information and latest repositories.",
+        "navigateTo": "/gitprofilefinder",
+        "externalLink": "https://github.com/jha-niraj"
+    },
 ]
